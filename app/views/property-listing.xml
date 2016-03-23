@@ -1,0 +1,15 @@
+<ActionBar title="Property Details">
+    <ActionItem *ngIf="!isFavourite()" (tap)="addToFavourites()">
+        <Button text="+"></Button>
+    </ActionItem>
+    <ActionItem *ngIf="isFavourite()" (tap)="removeFromFavourites()">
+        <Button  text="-"></Button>
+    </ActionItem>
+</ActionBar>
+<StackLayout class ="listing">
+    <Label class="price-label" text="{{listing.price | pound}}"></Label>
+    <Label class="title-label" [text]="listing.title"></Label>
+    <Image [src]="listing.img_url"></Image>
+    <Label class="rooms-label" [text]="rooms"></Label>
+    <Label class="summary" [text]="listing.summary" textWrap="true"></Label>
+</StackLayout>
