@@ -3,6 +3,16 @@
     margin: 5;
     padding: 10;
     font-size: 22;
+    text-transform: none;
+}
+
+ActionBar {
+    background-color: blue;
+    color: white;
+}
+
+.action-bar-button {
+    background-color: darkblue;
 }
 
 .searchfield {

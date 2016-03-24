@@ -1,8 +1,8 @@
-<ActionBarExtension>
+<ActionBar title="PropertyCross" android.icon="res://icon" android.iconVisibility="always">
     <ActionItem (tap)="goToFavourites()">
-        <Button text="Faves"></Button>
+        <Button class="action-bar-button" text="Faves"></Button>
     </ActionItem>
-</ActionBarExtension>
+</ActionBar>
 <StackLayout>
     <Label class="intro" text="{{introduction}}" textWrap="true"></Label>
     <SearchBar class="searchfield" #searchField hint="Enter a location" [(ngModel)]="location.name"></SearchBar>

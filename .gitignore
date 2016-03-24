@@ -4,3 +4,4 @@ platforms/
 tmp/
 app/**/*.js
 app/**/*.map
+PropertyCross/

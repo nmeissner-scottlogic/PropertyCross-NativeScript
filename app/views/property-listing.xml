@@ -1,9 +1,9 @@
-<ActionBar title="Property Details">
+<ActionBar title="Property Details" android.icon="res://icon" android.iconVisibility="always">
     <ActionItem *ngIf="!isFavourite()" (tap)="addToFavourites()">
-        <Button text="+"></Button>
+        <Button class="action-bar-button" text="+"></Button>
     </ActionItem>
     <ActionItem *ngIf="isFavourite()" (tap)="removeFromFavourites()">
-        <Button  text="-"></Button>
+        <Button class="action-bar-button" text="-"></Button>
     </ActionItem>
 </ActionBar>
 <StackLayout class ="listing">

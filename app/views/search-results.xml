@@ -1,4 +1,4 @@
-<ActionBar title="{{ searchResults.length }} of {{ totalResults }} matches">
+<ActionBar title="{{ searchResults.length }} of {{ totalResults }} matches" android.icon="res://icon" android.iconVisibility="always">
 </ActionBar>
 <GridLayout rows="*, auto">
     <GridLayout row="0">
