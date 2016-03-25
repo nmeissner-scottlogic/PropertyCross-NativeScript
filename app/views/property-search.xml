@@ -12,10 +12,10 @@
     </StackLayout>
     <StackLayout *ngIf="!error && !locationProposal">
         <Label class="caption" text="Recent searches:"></Label>
-        <StackLayout *ngFor="#item of recentLocations" orientation="horizontal" (tap)="repeatRecentSearch(item)">
-            <Label class="location-label" text="{{item.location.name}}"></Label>
-            <Label class="results-label" text="{{item.results}}"></Label>
-        </StackLayout>
+        <DockLayout *ngFor="#item of recentLocations" orientation="horizontal" (tap)="repeatRecentSearch(item)" stretchLastChild="false">
+            <Label dock="left" class="location-label" text="{{item.location.name}}"></Label>
+            <Label dock="right" class="results-label" text="{{item.results}}" minWidth="80"></Label>
+        </DockLayout>
     </StackLayout>
     <StackLayout *ngIf="!error && locationProposal">
         <Label class="caption" text="Please select a location below:"></Label>
