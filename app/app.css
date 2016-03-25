@@ -15,6 +15,7 @@ Button {
 ActionBar {
     background-color: #4880E8;
     color: white;
+    text-align: center;
 }
 
 .action-bar-button {
@@ -55,10 +56,22 @@ ActionBar {
     color: blue;
 }
 
+.price-label-big {
+    font-size: 24;
+    margin-left: 5;
+    margin-right: 5;
+    color: blue;
+}
+
 .title-label {
     font-size: 16;
     margin-left: 5;
     margin-right: 5;
+}
+
+.title-label-big {
+    font-size: 20;
+    margin: 5;
 }
 
 .rooms-label {

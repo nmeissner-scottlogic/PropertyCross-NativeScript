@@ -7,8 +7,8 @@
     </ActionItem>
 </ActionBar>
 <StackLayout class ="listing">
-    <Label class="price-label" text="{{listing.price | pound}}"></Label>
-    <Label class="title-label" [text]="listing.title"></Label>
+    <Label class="price-label-big" text="{{listing.price | pound}}"></Label>
+    <Label class="title-label-big" [text]="listing.title" textWrap="true"></Label>
     <Image [src]="listing.img_url"></Image>
     <Label class="rooms-label" [text]="rooms"></Label>
     <Label class="summary" [text]="listing.summary" textWrap="true"></Label>
