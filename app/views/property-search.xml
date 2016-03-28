@@ -1,9 +1,10 @@
-<ActionBar title="PropertyCross" android.icon="res://icon" android.iconVisibility="always">
+<ActionBar title=" PropertyCross" android.icon="res://icon" android.iconVisibility="always">
     <ActionItem (tap)="goToFavourites()">
         <Button class="action-bar-button" text="Faves"></Button>
     </ActionItem>
 </ActionBar>
-<StackLayout>
+<ActivityIndicator [busy]="isSearching"></ActivityIndicator>
+<StackLayout *ngIf="!isSearching">
     <Label class="intro" text="{{introduction}}" textWrap="true"></Label>
     <SearchBar class="searchfield" #searchField hint="Enter a location" [(ngModel)]="location.name"></SearchBar>
     <StackLayout orientation="horizontal">

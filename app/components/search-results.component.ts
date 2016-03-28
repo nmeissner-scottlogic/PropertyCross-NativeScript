@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Component, ChangeDetectionStrategy, OnInit } from "angular2/core";
+import { Component, OnInit } from "angular2/core";
 import {Router} from "angular2/router";
 import {topmost} from "ui/frame";
 import {ActionBar} from "ui/action-bar";
@@ -15,7 +15,6 @@ import { PoundPipe } from "../pipes/pound-pipe";
 @Component({
     selector: "search-results",
     templateUrl: "views/search-results.xml",
-    changeDetection: ChangeDetectionStrategy.OnPush,
     pipes: [PoundPipe],
     providers: [SearchService]
 })
@@ -24,20 +23,17 @@ export class SearchResultsComponent implements OnInit {
     private searchLocation: SimpleLocation;
     public totalResults: number;
     private currentPage: number;
-    private isLoadingMore: boolean;
+    public isLoadingMore: boolean;
     
     constructor(private _router: Router, private _searchResultsModel: SearchResultsModel, private _searchService: SearchService) { }
     
     ngOnInit() {
         this._searchResultsModel.results$.subscribe(results => {
-            console.log("Subscription...");
             this.searchResults = [];
             results.listings.forEach(listing => this.searchResults.push(listing));
             this.searchLocation = results.location;
             this.totalResults = results.totalResults; 
-            this.currentPage = results.currentPage;
-            this.isLoadingMore = false;
-            console.log("... End Subscription");
+            this.currentPage = results.currentPage;            
         });
         this._searchResultsModel.get();
     }
@@ -52,12 +48,9 @@ export class SearchResultsComponent implements OnInit {
             return;
         }
         this.isLoadingMore = true;
-        console.log("load more items");
         let response = <Observable<any>> this._searchService.search(this.searchLocation.key, this.currentPage + 1);
-        console.log("Before response processing.");
         response.subscribe(res => {
             console.log("In response processing...");
-            console.log("Response code: " + res.application_response_code);
             if(res.application_response_code === "100" || res.application_response_code === "101" || res.application_response_code === "110") {
                 if (res.listings.length > 0) {
                     this._searchResultsModel.add(res.listings.map(listing => { return {
@@ -75,7 +68,8 @@ export class SearchResultsComponent implements OnInit {
         },
         err => { 
             console.error("An error occured: " + err);
-        });
+        },
+        () => this.isLoadingMore = false);
 
     }
     

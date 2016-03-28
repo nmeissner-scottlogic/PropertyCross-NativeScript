@@ -1,9 +1,7 @@
 import 'reflect-metadata';
 import { Inject, Component } from "angular2/core";
 import {Router} from "angular2/router";
-import {topmost} from "ui/frame";
 import {Observable} from "rxjs/Observable";
-import {ActionBar, ActionItem} from "ui/action-bar";
 import {Location, getCurrentLocation, isEnabled, enableLocationRequest } from "nativescript-geolocation";
 import {SearchService} from "../services/search-service";
 import {RecentSearchService} from "../services/recent-search-service"
@@ -24,6 +22,7 @@ export class PropertySearchComponent {
     public error: boolean;
     public errorMessage: string;
     public locationProposal: boolean;
+    public isSearching: boolean;
     
     constructor(private _searchService: SearchService, private _recentSearchService: RecentSearchService, private _router: Router, private _searchResultsModel: SearchResultsModel) {
         console.log("PropertySearchComponent constructor");
@@ -40,6 +39,7 @@ export class PropertySearchComponent {
             this.location.key = this.location.name;
         }
         if (this.location.key != "") {
+            this.isSearching = true;
             let response = <Observable<any>> this._searchService.search(this.location.key);
             this.processSearchResponse(response);       
         }  
@@ -120,7 +120,7 @@ export class PropertySearchComponent {
             this.errorMessage = "There has been a problem with your search.";
             this.location.key = "";
         },
-        () => console.log("search done"));
+        () => this.isSearching = false);
     }
     
     private addRecentLocation(item: RecentSearchItem) {

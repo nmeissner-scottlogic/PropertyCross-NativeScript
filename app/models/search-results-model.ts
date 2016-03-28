@@ -30,13 +30,9 @@ export class SearchResultsModel {
     }
     
     add(listings: Listing[]) {
-        console.log("Length of new listings: " + listings.length);
-        console.log("Length before add: " + this._resultsStore.results.listings.length);
         this._resultsStore.results.listings = this._resultsStore.results.listings.concat(listings);
         this._resultsStore.results.currentPage++;
-        console.log("Length after add: " + this._resultsStore.results.listings.length);
         this._resultsObserver.next(this._resultsStore.results);
-        console.log("Length after observe trigger: " + this._resultsStore.results.listings.length);
     }
     
     get() {

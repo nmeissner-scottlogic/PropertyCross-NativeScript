@@ -1,6 +1,7 @@
-<ActionBar title="{{ searchResults.length }} of {{ totalResults }} matches" android.icon="res://icon" android.iconVisibility="always">
+<ActionBar title=" {{ searchResults.length }} of {{ totalResults }} matches" android.icon="res://icon" android.iconVisibility="always">
 </ActionBar>
-<GridLayout rows="*, auto">
+<ActivityIndicator [busy]="isLoadingMore"></ActivityIndicator>
+<GridLayout *ngIf="!isLoadingMore" rows="*, auto">
     <GridLayout row="0">
     <ListView [items]="searchResults" dock="top">
         <template #item="item">
