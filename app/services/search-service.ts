@@ -12,7 +12,6 @@ export class SearchService {
     constructor(private _http: Http) {}
     
     search(location: string, page: number = 1) : Observable<any> {
-        console.log("SearchService.search("+ location +", Page: " + page + ")");
         let searchParams: URLSearchParams = new URLSearchParams();
         searchParams.append("country", "uk");
         searchParams.append("pretty", "1");
@@ -21,16 +20,13 @@ export class SearchService {
         searchParams.append("listing_type", "buy");
         searchParams.append("page", page.toString());
         searchParams.append("place_name", location);
-        console.log("Before Http call.");
         const response: Observable<Response> = this._http.get(Config.apiUrl, { search: searchParams });
-        console.log("After Http call.");
         return response.map(res => res.json()).map(
                 data => data.response
                 );
        }  
        
       searchByCoords(latitude: number, longitude: number, page: number = 1) : Observable<any> {
-        console.log("SearchService.search("+ latitude + ", " + longitude +")");
         let searchParams: URLSearchParams = new URLSearchParams();
         searchParams.append("country", "uk");
         searchParams.append("pretty", "1");

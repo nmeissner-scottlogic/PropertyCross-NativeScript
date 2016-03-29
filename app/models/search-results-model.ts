@@ -19,7 +19,6 @@ export class SearchResultsModel {
         this.results$ = new Observable<SearchResults>(observer => { this._resultsObserver = observer; } ).share();
         // Create observer
         this.results$.subscribe();
-        console.log("SearchResultsModel constructor.");
         this._resultsStore = { results: { location: null, listings: [], totalResults: 0, currentPage: 0 } };
     }
 

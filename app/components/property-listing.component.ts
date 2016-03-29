@@ -18,8 +18,6 @@ export class PropertyListingComponent {
     constructor(private _routeParams:RouteParams, private _searchResultsModel: SearchResultsModel, private _favouritesModel: FavouritesModel) {
         let guid = this._routeParams.get('guid');
         let fromFavourites = this._routeParams.get('fromFavs');
-        console.log("Guid: " + guid);
-        console.log("fromFavourites: " + fromFavourites);
         if(fromFavourites) {
             this.listing = _favouritesModel.getListingByGuid(guid);
         } else {

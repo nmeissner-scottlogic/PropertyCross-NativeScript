@@ -4,7 +4,6 @@ import {Pipe, PipeTransform} from 'angular2/core';
 export class PoundPipe implements PipeTransform {
     transform(value:number) : string {
         return this.toCurrencyString(value, '.', ',', 0);
-        //return value.toLocaleString("en-GB", {style: "currency", currency: "GBP", minimumFractionDigits: 0});
     }
   
     toCurrencyString(number: number, decimalSeparator: string, thousandsSeparator: string, nDecimalDigits: number): string {

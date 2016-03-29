@@ -18,6 +18,10 @@ ActionBar {
     text-align: center;
 }
 
+.hidden {
+    opacity: 0;
+}
+
 .action-bar-button {
     background-color: #4880E8;
 }

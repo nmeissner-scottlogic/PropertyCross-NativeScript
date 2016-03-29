@@ -15,7 +15,6 @@ export class FavouritesModel {
     } 
     
     constructor() {
-        console.log("In FavouritesModel constructor");
         this.favourites$ = new Observable<Array<Listing>>(observer => { this._favouritesObserver = observer; } ).share();
         // Create observer
         this.favourites$.subscribe();
@@ -25,14 +24,12 @@ export class FavouritesModel {
     }
 
     add(listing: Listing) {
-        console.log("In FavouritesModel.add()");
         this._favouritesStore.listings.push(listing);
         this._favouritesObserver.next(this._favouritesStore.listings);
         this.save();
     }
     
     remove(listing: Listing) {
-        console.log("In FavouritesModel.remove()");
         const index = this._favouritesStore.listings.findIndex(fav => fav.guid === listing.guid);
         if (index != -1) {
             this._favouritesStore.listings.splice(index, 1);

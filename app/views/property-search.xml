@@ -4,7 +4,7 @@
     </ActionItem>
 </ActionBar>
 <ActivityIndicator [busy]="isSearching"></ActivityIndicator>
-<StackLayout *ngIf="!isSearching">
+<StackLayout cssClass="{{ isSearching ? 'hidden' : ''}}">
     <Label class="intro" text="{{introduction}}" textWrap="true"></Label>
     <SearchBar class="searchfield" #searchField hint="Enter a location" [(ngModel)]="location.name"></SearchBar>
     <StackLayout orientation="horizontal">

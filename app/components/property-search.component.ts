@@ -25,7 +25,6 @@ export class PropertySearchComponent {
     public isSearching: boolean;
     
     constructor(private _searchService: SearchService, private _recentSearchService: RecentSearchService, private _router: Router, private _searchResultsModel: SearchResultsModel) {
-        console.log("PropertySearchComponent constructor");
         this.introduction = "Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!";
         this.recentLocations = this._recentSearchService.getRecentSearches();
         this.location = { key: "", name: "" };
@@ -65,17 +64,14 @@ export class PropertySearchComponent {
     }
     
     determineLocation() {
-        console.log("In getLocation()");
         if(!isEnabled()) {
             enableLocationRequest();
         }
         let location = getCurrentLocation({desiredAccuracy: 3, updateDistance: 10, maximumAge: 20000, timeout: 20000})
             .then( loc => {
-                console.log("Latitude: " + loc.latitude + ", Longitude: " + loc.longitude); 
                 this.searchByGeoLocation(loc);
              },
              error => {
-                 console.log("An error occured: " + error);
                  this.error = true;
                  this.errorMessage = "Unable to detect current location. Please ensure location is turned on in your phone settings and try again.";
              });
@@ -115,7 +111,6 @@ export class PropertySearchComponent {
             }
         },
         err => { 
-            console.error("An error occured: " + err);
             this.error = true;
             this.errorMessage = "There has been a problem with your search.";
             this.location.key = "";

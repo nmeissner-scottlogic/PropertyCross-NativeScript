@@ -33,7 +33,8 @@ export class SearchResultsComponent implements OnInit {
             results.listings.forEach(listing => this.searchResults.push(listing));
             this.searchLocation = results.location;
             this.totalResults = results.totalResults; 
-            this.currentPage = results.currentPage;            
+            this.currentPage = results.currentPage;
+            this.isLoadingMore = false;      
         });
         this._searchResultsModel.get();
     }
@@ -43,15 +44,13 @@ export class SearchResultsComponent implements OnInit {
     }
     
     loadMore() {
-        console.log(this.isLoadingMore);
         if(this.isLoadingMore || this.searchResults.length === this.totalResults) {  
             return;
         }
         this.isLoadingMore = true;
         let response = <Observable<any>> this._searchService.search(this.searchLocation.key, this.currentPage + 1);
         response.subscribe(res => {
-            console.log("In response processing...");
-            if(res.application_response_code === "100" || res.application_response_code === "101" || res.application_response_code === "110") {
+             if(res.application_response_code === "100" || res.application_response_code === "101" || res.application_response_code === "110") {
                 if (res.listings.length > 0) {
                     this._searchResultsModel.add(res.listings.map(listing => { return {
                         guid: listing.guid,
@@ -68,12 +67,12 @@ export class SearchResultsComponent implements OnInit {
         },
         err => { 
             console.error("An error occured: " + err);
-        },
-        () => this.isLoadingMore = false);
+        });
 
     }
     
     loadingButtonEnabled(): boolean {
         return !this.isLoadingMore && this.searchResults.length < this.totalResults;
     } 
+
 }
