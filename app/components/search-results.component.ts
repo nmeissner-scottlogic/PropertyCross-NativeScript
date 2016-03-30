@@ -15,6 +15,7 @@ import { PoundPipe } from "../pipes/pound-pipe";
 @Component({
     selector: "search-results",
     templateUrl: "views/search-results.xml",
+    styleUrls: ["styles/search-results.css"],
     pipes: [PoundPipe],
     providers: [SearchService]
 })

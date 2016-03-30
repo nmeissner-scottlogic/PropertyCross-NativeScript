@@ -6,9 +6,9 @@
         <Button class="action-bar-button" text="-"></Button>
     </ActionItem>
 </ActionBar>
-<StackLayout class ="listing">
-    <Label class="price-label-big" text="{{listing.price | pound}}"></Label>
-    <Label class="title-label-big" [text]="listing.title" textWrap="true"></Label>
+<StackLayout class="listing">
+    <Label class="price-label" text="{{listing.price | pound}}"></Label>
+    <Label class="title-label" [text]="listing.title" textWrap="true"></Label>
     <Image [src]="listing.img_url"></Image>
     <Label class="rooms-label" [text]="rooms"></Label>
     <Label class="summary" [text]="listing.summary" textWrap="true"></Label>

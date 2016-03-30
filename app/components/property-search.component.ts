@@ -12,6 +12,7 @@ import { RecentSearchItem } from "../models/recent-search-item";
 @Component({
     selector: "property-search",
     templateUrl: "views/property-search.xml",
+    styleUrls: ["styles/property-search.css"],
     providers: [SearchService, RecentSearchService]
 })
 export class PropertySearchComponent {

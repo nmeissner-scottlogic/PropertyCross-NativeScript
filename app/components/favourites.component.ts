@@ -8,6 +8,7 @@ import { FavouritesModel } from "../models/favourites-model";
 @Component({
     selector: "favourites",
     templateUrl: "views/favourites.xml",
+    styleUrls: ["styles/favourites.css"],
     pipes: [PoundPipe]
 })
 export class FavouritesComponent implements OnInit {

@@ -9,6 +9,7 @@ import { FavouritesModel } from "../models/favourites-model";
 @Component({
     selector: "property-listing",
     templateUrl: "views/property-listing.xml",
+    styleUrls: ["styles/property-listing.css"],
     pipes: [PoundPipe]
 })
 export class PropertyListingComponent {
